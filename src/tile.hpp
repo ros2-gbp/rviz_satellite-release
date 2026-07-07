@@ -13,14 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License. */
 #pragma once
 
+#include <Ogre.h>
+#include <proj.h>
+
+#include <QMetaType>
 #include <cmath>
+#include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <stdexcept>
 #include <string>
 #include <tuple>
-#include <Ogre.h>
-
-#include <QMetaType>
-#include <sensor_msgs/msg/nav_sat_fix.hpp>
 
 namespace rviz_satellite
 {
@@ -72,6 +73,23 @@ struct TileId
   }
 };
 
+struct TileMapInformation
+{
+  int zoom;
+
+  // local map information
+  bool local_map;
+  double meter_per_pixel_z0;
+  double origin_x;
+  double origin_y;
+  std::string origin_crs;
+  bool project_to_utm = false;
+
+  // local map projection
+  PJ_CONTEXT * context = proj_context_create();
+  PJ * transformation = nullptr;
+};
+
 /// Max number of adjacent blocks to support.
 static constexpr int MAX_BLOCKS = 8;
 
@@ -83,19 +101,19 @@ static constexpr int MAX_ZOOM = 22;
  *
  * @see https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Resolution_and_Scale
  */
-double zoomSize(double lat, int zoom);
+double zoomSize(double lat, TileMapInformation tile_map_info);
 
 std::string tileURL(const TileId & tile_id);
 
 /**
  * Convert WGS coordinate to a tile coordinate using the Mercator projection.
  */
-TileCoordinate fromWGS(const sensor_msgs::msg::NavSatFix &, int zoom);
+TileCoordinate fromWGS(const sensor_msgs::msg::NavSatFix &, TileMapInformation tile_map_info);
 
 /**
  * Get the relative offset (-0.5, 0.5) of the geo point to the center of the tile
  */
-Ogre::Vector2 tileOffset(const sensor_msgs::msg::NavSatFix &, int zoom);
+Ogre::Vector2 tileOffset(const sensor_msgs::msg::NavSatFix &, TileMapInformation tile_map_info);
 
 }  // namespace rviz_satellite
 

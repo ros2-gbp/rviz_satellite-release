@@ -2,6 +2,42 @@
 Changelog for package rviz_satellite
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.3.1 (2025-12-18)
+------------------
+* rviz switched to Qt6
+  https://github.com/ros2/rviz/pull/1635
+* CI and formatting using pre-commit
+* Update demo.rviz Object URI
+* Contributors: Tim Clephas, psmh13
+
+4.3.0 (2025-11-05)
+------------------
+* added generic utm rotation calculation based on only latitude and longitude
+* added property to visualize in utm frame, if activated utm_rotation factor will be calculated to correct position and orientation of tiles
+* Add exception handling for the shiftMap error
+* Contributors: Florian, junhee.lee
+
+4.2.1 (2025-05-23)
+------------------
+* List Tim Clephas as maintainer to receive buildfarm emails
+* Replace ament_target_dependencies with target_link_libraries
+* Contributors: Alejandro Hernández Cordero, Tim Clephas
+
+4.2.0 (2025-05-20)
+------------------
+* Fixed demo (install rviz file)
+* Add libproj-dev as dependency at package.xml
+* Add support for sub-region tile servers (local maps)
+* fix: time conversion constant in publish_demo_data
+* Contributors: Ahmad Kamal Nasir, Christian Geller, David Alejo Teissière, Tim Clephas, nmitropoulos
+
+4.1.0 (2024-08-27)
+------------------
+* Fix tile map not moving
+* tiles: Add support for reading tiles from filesystem. (`#121 <https://github.com/nobleo/rviz_satellite/issues/121>`_)
+* Fix Demo
+* Contributors: Jack Geissinger, Ramon Wijnands, Tim Clephas, Karl Schulz
+
 4.0.0 (2023-02-20)
 ------------------
 * ROS2 support!

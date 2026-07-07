@@ -13,9 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License. */
 #pragma once
 
-#include <string>
-#include <map>
 #include <QtNetwork>
+#include <map>
+#include <string>
+
 #include "tile.hpp"
 
 namespace rviz_satellite
@@ -27,19 +28,13 @@ private:
   std::string message_;
 
 public:
-  explicit tile_request_error(const std::string & message)
-  : message_(message)
-  {
-  }
+  explicit tile_request_error(const std::string & message) : message_(message) {}
 
-  const char * what() const noexcept override
-  {
-    return message_.c_str();
-  }
+  const char * what() const noexcept override { return message_.c_str(); }
 };
 
 /**
- * @brief Download slippy tiles from a Tile server.
+ * @brief Download tiles from a Tile server.
  */
 class TileClient : public QObject
 {
@@ -57,8 +52,25 @@ public:
    *
    * Since QNetworkDiskCache is used, tiles will be loaded from the file system if they have been cached. Otherwise they
    * get downloaded.
+   *
+   * If server url contains "file://", local filesystem will be used.
+   *
    */
   std::future<QImage> request(const TileId & tile_id);
+
+  /**
+   * @brief Load a specific tile from filesystem
+   *
+   */
+  std::future<QImage> request_local(const TileId & tile_id);
+
+  /**
+   * @brief Load a specific tile from internet
+   *
+   * Since QNetworkDiskCache is used, tiles will be loaded from the file system if they have been cached. Otherwise they
+   * get downloaded.
+   */
+  std::future<QImage> request_remote(const TileId & tile_id);
 
 private Q_SLOTS:
   void request_finished(QNetworkReply * reply);
