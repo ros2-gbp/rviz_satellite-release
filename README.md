@@ -1,3 +1,26 @@
+## rviz_satellite (lyrical) - 4.3.1-1
+
+The packages in the `rviz_satellite` repository were released into the `lyrical` distro by running `/usr/bin/bloom-release --ros-distro lyrical rviz_satellite` on `Tue, 07 Jul 2026 07:13:25 -0000`
+
+The `rviz_satellite` package was released.
+
+Version of package(s) in repository `rviz_satellite`:
+
+- upstream repository: https://github.com/nobleo/rviz_satellite.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `4.3.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.3`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## rviz_satellite (iron) - 4.0.0-1
 
 The packages in the `rviz_satellite` repository were released into the `iron` distro by running `/usr/bin/bloom-release rviz_satellite -r iron` on `Sat, 27 May 2023 07:12:11 -0000`
