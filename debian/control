@@ -1,0 +1,12 @@
+Source: ros-jazzy-rviz-satellite
+Section: misc
+Priority: optional
+Maintainer: "Tim Clephas" <tim.clephas@nobleo.nl>
+Build-Depends: debhelper (>= 9.0.0), libproj-dev, qtbase5-dev, ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-gtest <!nocheck>, ros-jazzy-angles, ros-jazzy-rclcpp, ros-jazzy-rcpputils, ros-jazzy-rviz-common, ros-jazzy-rviz-default-plugins, ros-jazzy-sensor-msgs, ros-jazzy-ros-workspace
+Homepage: https://index.ros.org/p/rviz_satellite/#jazzy
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-rviz-satellite
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libproj-dev, ros-jazzy-angles, ros-jazzy-rclcpp, ros-jazzy-rcpputils, ros-jazzy-rviz-common, ros-jazzy-rviz-default-plugins, ros-jazzy-sensor-msgs, ros-jazzy-ros-workspace
+Description: Display satellite map tiles in RViz
